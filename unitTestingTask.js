@@ -205,6 +205,7 @@
      * @return {String}             Current language.
      */
     var lang = unitTestingTask.lang = function (lang, options) {
+        console.log(lang, options);
         if (!lang) {
             return languages.current;
         }
