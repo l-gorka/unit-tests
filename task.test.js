@@ -3,37 +3,21 @@ let dateFunc = require('./unitTestingTask.js');
 jest.useFakeTimers();
 jest.setSystemTime(new Date('2020-01-01'));
 
-describe('Unit testing task', () => {
-  test('should return date in correct format', () => {
-    const result = dateFunc('YYYY YY MMMM MMM MM M DDD DD D dd d HH H hh h mm m ss s ff f A a ZZ Z', new Date());
+describe('Returned values tests', () => {
+  const testCases = [
+    ['YYYY YY MMMM MMM MM M DDD DD D dd d HH H hh h mm m ss s ff f A a ZZ Z', new Date(), '2020 20 January Jan 01 1 Wednesday Wed We 01 1 01 1 01 1 00 0 00 0 000 0 AM am +0100 +01:00'],
+    ['YYYY/MM/dd', '2023-12-12', '2023/12/12'],
+    ['YYYY/MM/dd', 1678822716000, '2023/03/14'],
+    ['YYYY.MM.dd', '1', '2001.01.01'],
+    ['YYYY - MM - dd', undefined, '2020 - 01 - 01'],
+  ]
 
-    expect(result).toBe('2020 20 January Jan 01 1 Wednesday Wed We 01 1 01 1 01 1 00 0 00 0 000 0 AM am +0100 +01:00');
-  });
+  test.each(testCases)('given %p as format and %p as date, should return %p', (format, date, expected) => {
+    expect(dateFunc(format, date)).toBe(expected);
+  })
+})
 
-  test('should convert ISO format to Date', () => {
-    const result = dateFunc('YYYY/MM/dd', '2023-12-12');
-
-    expect(result).toBe('2023/12/12');
-  });
-
-  test('should convert timestamp to Date', () => {
-    const result = dateFunc('YYYY/MM/dd', 1678822716000);
-
-    expect(result).toBe('2023/03/14');
-  });
-
-  test('should use current date if incorrect timestamp value is provided', () => {
-    const result = dateFunc('YYYY.MM.dd', '1');
-
-    expect(result).toBe('2001.01.01');
-  });
-
-  test("should use today's date if no date is passed in args", () => {
-    const result = dateFunc('YYYY - MM - dd');
-
-    expect(result).toBe('2020 - 01 - 01');
-  });
-
+describe('Predefined format test', () => {
   test('should return date in predefined format', () => {
     const result = dateFunc('ISODateTimeTZ', new Date(2023, 12, 31));
 
@@ -52,10 +36,12 @@ describe('Unit testing task', () => {
 
     expect(result).toBe('January');
   });
+})
 
+describe('Error handling tests', () => {
   test('should throw error with correct message when passed format is not string', () => {
     try {
-      const error = dateFunc(11, new Date());
+      dateFunc(11, new Date());
     } catch (error) {
       expect(error).toHaveProperty('message', 'Argument `format` must be a string');
     }
@@ -63,7 +49,7 @@ describe('Unit testing task', () => {
 
   test('should throw error with correct message when date is in incorrect format', () => {
     try {
-      const error = dateFunc('YYYY', {});
+      dateFunc('YYYY', {});
     } catch (error) {
       expect(error).toHaveProperty(
         'message',
@@ -71,4 +57,4 @@ describe('Unit testing task', () => {
       );
     }
   });
-});
+})

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678902445817" clover="3.2.0">
-  <project timestamp="1678902445817" name="All files">
-    <metrics statements="325" coveredstatements="303" conditionals="71" coveredconditionals="63" methods="35" coveredmethods="34" elements="431" coveredelements="400" complexity="0" loc="325" ncloc="325" packages="1" files="1" classes="1"/>
+<coverage generated="1679924005894" clover="3.2.0">
+  <project timestamp="1679924005894" name="All files">
+    <metrics statements="325" coveredstatements="303" conditionals="70" coveredconditionals="62" methods="35" coveredmethods="34" elements="430" coveredelements="399" complexity="0" loc="325" ncloc="325" packages="1" files="1" classes="1"/>
     <file name="unitTestingTask.js" path="/Users/lgorka/gridu/date-master/unitTestingTask.js">
-      <metrics statements="325" coveredstatements="303" conditionals="71" coveredconditionals="63" methods="35" coveredmethods="34"/>
+      <metrics statements="325" coveredstatements="303" conditionals="70" coveredconditionals="62" methods="35" coveredmethods="34"/>
       <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       <line num="2" count="1" type="cond" truecount="0" falsecount="2"/>
       <line num="3" count="0" type="stmt"/>
@@ -182,7 +182,7 @@
       <line num="176" count="1" type="stmt"/>
       <line num="177" count="1" type="cond" truecount="1" falsecount="0"/>
       <line num="178" count="8" type="stmt"/>
-      <line num="179" count="10" type="cond" truecount="5" falsecount="0"/>
+      <line num="179" count="10" type="cond" truecount="4" falsecount="0"/>
       <line num="180" count="10" type="stmt"/>
       <line num="181" count="10" type="stmt"/>
       <line num="182" count="10" type="stmt"/>
